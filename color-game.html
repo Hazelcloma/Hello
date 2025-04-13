@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matching Game</title>
+    <style>
+        :root {
+            --primary-color: #00ff00;
+            --background-color: #1a1a1a;
+            --card-color: #2a2a2a;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-container {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            background-color: var(--card-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .stats {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Color Matching Game</h1>
+        <div class="game-board"></div>
+        <div class="stats">
+            <p>Moves: <span id="moves">0</span></p>
+            <p>Pairs Found: <span id="pairs">0</span> / 8</p>
+        </div>
+        <button class="restart-btn" onclick="restartGame()">Restart Game</button>
+    </div>
+
+    <script>
+        const colors = [
+            '#FF0000', '#00FF00', '#0000FF', '#FFFF00',
+            '#FF00FF', '#00FFFF', '#FFA500', '#800080'
+        ];
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+
+        function createBoard() {
+            const gameBoard = document.querySelector('.game-board');
+            const colorPairs = [...colors, ...colors];
+            cards = shuffleArray(colorPairs);
+
+            gameBoard.innerHTML = '';
+            cards.forEach((color, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.index = index;
+                card.addEventListener('click', flipCard);
+                gameBoard.appendChild(card);
+            });
+        }
+
+        function flipCard() {
+            if (flippedCards.length === 2) return;
+            const card = this;
+            if (card.style.backgroundColor) return;
+
+            const index = card.dataset.index;
+            card.style.backgroundColor = cards[index];
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('moves').textContent = moves;
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            const match = card1.style.backgroundColor === card2.style.backgroundColor;
+
+            if (match) {
+                matchedPairs++;
+                document.getElementById('pairs').textContent = matchedPairs;
+                flippedCards = [];
+                if (matchedPairs === 8) {
+                    setTimeout(() => {
+                        alert('Congratulations! You won!');
+                    }, 500);
+                }
+            } else {
+                setTimeout(() => {
+                    card1.style.backgroundColor = '';
+                    card2.style.backgroundColor = '';
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function restartGame() {
+            cards = [];
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            document.getElementById('moves').textContent = '0';
+            document.getElementById('pairs').textContent = '0';
+            createBoard();
+        }
+
+        // Initialize the game
+        createBoard();
+    </script>
+</body>
+</html> 

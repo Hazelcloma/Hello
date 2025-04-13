@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazel's Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <div class="game-logo">
+                <h1>COLOR MATCH</h1>
+                <div class="game-subtitle">MEMORY CHALLENGE</div>
+            </div>
+            <div class="welcome-text">
+                <div class="game-stats-preview">
+                    <div class="stat">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-label">Best Score</span>
+                        <span class="stat-value" id="best-score">--</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎯</span>
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                </div>
+                <div class="game-instructions">
+                    <h3>HOW TO PLAY</h3>
+                    <ul>
+                        <li><span class="instruction-icon">🎮</span> Click cards to reveal colors</li>
+                        <li><span class="instruction-icon">⚡</span> Match pairs to score points</li>
+                        <li><span class="instruction-icon">🏆</span> Complete all pairs to advance</li>
+                        <li><span class="instruction-icon">⭐</span> Beat your best time!</li>
+                    </ul>
+                </div>
+                <div class="difficulty-selector">
+                    <h3>SELECT DIFFICULTY</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn" data-difficulty="easy">EASY</button>
+                        <button class="difficulty-btn active" data-difficulty="medium">MEDIUM</button>
+                        <button class="difficulty-btn" data-difficulty="hard">HARD</button>
+                    </div>
+                </div>
+            </div>
+            <button id="start-game-btn" class="glow-button">
+                <span class="btn-text">START GAME</span>
+                <span class="btn-icon">▶</span>
+            </button>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="logo">Hazel's Website</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>PLAYER ONE: READY</h1>
+            <p>Level 99 Game Developer | Quest Master | Achievement Hunter</p>
+            <div class="hero-stats">
+                <div class="stat-item" id="game-dev-stat">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Game Developer</span>
+                </div>
+                <div class="stat-description" id="game-dev-description">
+                    <h3>Game Developer</h3>
+                    <p>Passionate about creating immersive gaming experiences through code. Specializing in:</p>
+                    <ul>
+                        <li>Game mechanics and physics implementation</li>
+                        <li>Interactive UI/UX design</li>
+                        <li>Performance optimization</li>
+                        <li>Cross-platform game development</li>
+                    </ul>
+                </div>
+                <div class="stat-item" id="code-warrior-stat">
+                    <i class="fas fa-code"></i>
+                    <span>Code Warrior</span>
+                </div>
+                <div class="stat-description" id="code-warrior-description">
+                    <h3>Code Warrior</h3>
+                    <p>Master of multiple programming languages and frameworks. Specializing in:</p>
+                    <ul>
+                        <li>Full-stack web development</li>
+                        <li>Object-oriented programming</li>
+                        <li>Database design and optimization</li>
+                        <li>API development and integration</li>
+                    </ul>
+                </div>
+                <div class="stat-item" id="achievement-stat">
+                    <i class="fas fa-trophy"></i>
+                    <span>Achievement Unlocked</span>
+                </div>
+                <div class="stat-description" id="achievement-description">
+                    <h3>Achievement Unlocked</h3>
+                    <p>Accomplished developer with a track record of success. Highlights include:</p>
+                    <ul>
+                        <li>Multiple game development projects</li>
+                        <li>Open source contributions</li>
+                        <li>Hackathon victories</li>
+                        <li>Technical writing and tutorials</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="start-adventure-btn" onclick="window.location.href='color-game.html'">
+                <span>START ADVENTURE</span>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>CHARACTER PROFILE</h2>
+        <div class="about-content">
+            <div class="character-card">
+                <div class="character-stats">
+                    <div class="stat-group">
+                        <h3>MAIN STATS</h3>
+                        <div class="stat-bar">
+                            <span class="stat-label">Coding Power</span>
+                            <div class="stat-progress">
+                                <div class="progress" style="width: 95%"></div>
+                            </div>
+                            <span class="stat-value">95/100</span>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="stat-label">Creativity</span>
+                            <div class="stat-progress">
+                                <div class="progress" style="width: 90%"></div>
+                            </div>
+                            <span class="stat-value">90/100</span>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="stat-label">Problem Solving</span>
+                            <div class="stat-progress">
+                                <div class="progress" style="width: 88%"></div>
+                            </div>
+                            <span class="stat-value">88/100</span>
+                        </div>
+                    </div>
+                    <div class="character-bio">
+                        <h3>CHARACTER BIO</h3>
+                        <p>A legendary game developer with a passion for creating immersive digital experiences. Equipped with the ancient knowledge of multiple programming languages and blessed with the power to turn ideas into interactive realities.</p>
+                        <div class="achievements">
+                            <h3>ACHIEVEMENTS UNLOCKED</h3>
+                            <ul class="achievement-list">
+                                <li><i class="fas fa-star"></i> Master of Code Crafting</li>
+                                <li><i class="fas fa-medal"></i> Creative Design Expert</li>
+                                <li><i class="fas fa-trophy"></i> Bug Slayer Supreme</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="special-skills">
+                    <h3>SPECIAL ABILITIES</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" id="fullstack-skill">
+                            <i class="fas fa-code"></i>
+                            <span>Full-Stack Magic</span>
+                        </div>
+                        <div class="skill-description" id="fullstack-description">
+                            <h3>Full-Stack Magic</h3>
+                            <p>Mastery of both frontend and backend development:</p>
+                            <ul>
+                                <li>Frontend: React, Vue.js, Angular</li>
+                                <li>Backend: Node.js, Python, Java</li>
+                                <li>Database: SQL, MongoDB, Redis</li>
+                                <li>DevOps: Docker, AWS, CI/CD</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-item" id="gamedev-skill">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Game Development</span>
+                        </div>
+                        <div class="skill-description" id="gamedev-description">
+                            <h3>Game Development</h3>
+                            <p>Creating immersive gaming experiences:</p>
+                            <ul>
+                                <li>Game Engines: Unity, Unreal Engine</li>
+                                <li>Physics & Mechanics Programming</li>
+                                <li>2D/3D Graphics & Animation</li>
+                                <li>Multiplayer & Networking</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-item" id="uiux-skill">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill-description" id="uiux-description">
+                            <h3>UI/UX Design</h3>
+                            <p>Crafting beautiful and intuitive interfaces:</p>
+                            <ul>
+                                <li>User Research & Testing</li>
+                                <li>Wireframing & Prototyping</li>
+                                <li>Responsive Design</li>
+                                <li>Animation & Interaction Design</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-item" id="problem-skill">
+                            <i class="fas fa-brain"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="skill-description" id="problem-description">
+                            <h3>Problem Solving</h3>
+                            <p>Analytical approach to complex challenges:</p>
+                            <ul>
+                                <li>Algorithm Design & Optimization</li>
+                                <li>System Architecture</li>
+                                <li>Performance Tuning</li>
+                                <li>Debug & Troubleshooting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>GAME QUESTS</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-dragon quest-icon"></i>
+                    <h3>Pixel Knight Adventure</h3>
+                    <span class="difficulty">Level: Medium</span>
+                </div>
+                <div class="project-content">
+                    <div class="game-features">
+                        <h4>GAME MECHANICS</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Retro-style platformer action</li>
+                            <li><i class="fas fa-check"></i> Combat & magic system</li>
+                            <li><i class="fas fa-check"></i> Character progression</li>
+                            <li><i class="fas fa-check"></i> Hidden secrets & treasures</li>
+                        </ul>
+                    </div>
+                    <div class="game-description">
+                        <p>Embark on an epic retro-style adventure! Battle monsters, discover powerful spells, and navigate through challenging platforming sections. Upgrade your knight with new abilities and find hidden treasures in this action-packed platformer.</p>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <i class="fas fa-sword"></i>
+                            <span>Action</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-hat-wizard"></i>
+                            <span>RPG</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>Adventure</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="#pixel-knight" class="play-now-btn" id="play-pixel-knight">
+                        <i class="fas fa-play"></i>
+                        PLAY NOW
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-chess quest-icon"></i>
+                    <h3>Snake Game</h3>
+                    <span class="difficulty">Level: Hard</span>
+                </div>
+                <div class="project-content">
+                    <div class="game-features">
+                        <h4>GAME MECHANICS</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Classic Snake game</li>
+                            <li><i class="fas fa-check"></i> Control the snake with arrow keys</li>
+                            <li><i class="fas fa-check"></i> Eat the food to grow longer</li>
+                            <li><i class="fas fa-check"></i> Avoid hitting the walls or yourself</li>
+                        </ul>
+                    </div>
+                    <div class="game-description">
+                        <p>Classic Snake game! Control the snake with arrow keys, eat the food to grow longer, and avoid hitting the walls or yourself. The game gets faster as your score increases!</p>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Arcade</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>Action</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="#strategy" class="play-now-btn" id="play-strategy">
+                        <i class="fas fa-play"></i>
+                        PLAY NOW
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-car quest-icon"></i>
+                    <h3>Chess Game</h3>
+                    <span class="difficulty">Level: Medium</span>
+                </div>
+                <div class="project-content">
+                    <div class="game-features">
+                        <h4>GAME MECHANICS</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Classic Chess game</li>
+                            <li><i class="fas fa-check"></i> Play against a friend</li>
+                            <li><i class="fas fa-check"></i> Move pieces according to rules</li>
+                            <li><i class="fas fa-check"></i> Capture opponent pieces</li>
+                        </ul>
+                    </div>
+                    <div class="game-description">
+                        <p>Classic Chess game! Play against a friend in this strategic board game. Move your pieces according to their rules, capture opponent pieces, and try to checkmate the enemy king. White moves first!</p>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <i class="fas fa-chess"></i>
+                            <span>Strategy</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-star"></i>
+                            <span>Board Game</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <a href="#chess" class="play-now-btn" id="play-chess">
+                        <i class="fas fa-play"></i>
+                        PLAY NOW
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game" class="game">
+        <h2>Play a Puzzle Game</h2>
+        <div class="game-container">
+            <div class="puzzle-game">
+                <div id="puzzle-board"></div>
+                <div class="game-controls">
+                    <button id="new-game-btn">New Game</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit" id="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="loading-spinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Hazel's Website. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
